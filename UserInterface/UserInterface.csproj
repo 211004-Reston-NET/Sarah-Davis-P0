@@ -1,5 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+<ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+    <ProjectReference Include="..\DataAccessLogic\DataAccessLogic.csproj" />
+     
+  </ItemGroup>
+
+<ItemGroup>
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
+    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PrivateAssets>all</PrivateAssets>
+  </PackageReference>
+</ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
