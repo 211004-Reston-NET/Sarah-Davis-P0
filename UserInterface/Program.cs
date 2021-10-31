@@ -27,8 +27,6 @@ namespace UserInterface
 
 
 
-
-
                 Console.Clear();
                 page.Menu();
                 MenuType userInput = page.UserChoice();
@@ -36,6 +34,10 @@ namespace UserInterface
                 {
                     case MenuType.MainMenu:
                         page = new MainMenu();
+                        break;
+
+                    case MenuType.LogIn:
+                        page = new Login(new CustomerBL(new RepositoryCloud(new RRDatabaseContext(options))));
                         break;
 
                     case MenuType.AddCustomer:
@@ -57,4 +59,5 @@ namespace UserInterface
 
         }
     }
+
 }

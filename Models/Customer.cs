@@ -1,16 +1,20 @@
 using System;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Customer
     {
-
+        private int _id;
         private string _name;
         private string _address;
         private string _email;
         private string _phoneNumber;
-        private string _listoforders;
+        private ICollection<Order> _listoforders;
+        private string _password;
+
+        
 
         public string Name
         {
@@ -22,6 +26,15 @@ namespace Models
                     throw new Exception("Name can only hold letters.");
                 }
                 _name = value;
+            }
+
+        }
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
             }
 
         }
@@ -57,6 +70,24 @@ namespace Models
             }
         }
          
+         public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value;
+            }
+        }
+         public ICollection<Order> ListOfOrders
+        {
+            get { return _listoforders; }
+            set
+            {
+                _listoforders = value;
+            }
+        }
     }
-
 }

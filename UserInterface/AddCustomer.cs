@@ -20,8 +20,9 @@ namespace UserInterface
             Console.WriteLine("[2]: Add Address");
             Console.WriteLine("[3]: Add Phone Number");
             Console.WriteLine("[4]: Add Email");
-            Console.WriteLine("[5]: Finish Creatiing Account");
-            Console.WriteLine("[0]: Exit");
+            Console.WriteLine("[5]: Add Password");
+            Console.WriteLine("[6]: Finish Creating Account");
+            Console.WriteLine("[0]: Back to Main Menu");
 
         }
 
@@ -43,14 +44,30 @@ namespace UserInterface
                     SingletonCustomer.customer.PhoneNumber = Console.ReadLine();
                     return MenuType.AddCustomer;
                 case "4":
+                    if (String.IsNullOrEmpty(SingletonCustomer.customer.Email)){
+                        Console.WriteLine("Please input email");}
+
                     Console.WriteLine("Add Email");
                     SingletonCustomer.customer.Email = Console.ReadLine();
                     return MenuType.AddCustomer;
+               
                 case "5":
-                    Console.WriteLine("Account created!");
-                    _customerbl.AddCustomer(SingletonCustomer.customer);
+                    Console.WriteLine("Add Password");
+                    SingletonCustomer.customer.Password = Console.ReadLine();
                     return MenuType.AddCustomer;
+
+
                 case "6":
+                    if (String.IsNullOrEmpty(SingletonCustomer.customer.Password)){
+                        Console.WriteLine("Please input a password");
+                        return MenuType.AddCustomer;
+                    } else {
+                        Console.WriteLine("Account created!");
+                    _customerbl.AddCustomer(SingletonCustomer.customer);
+                     return MenuType.MainMenu;
+                    }
+                    
+                case "7":
                     return MenuType.Exit;
 
                 default:

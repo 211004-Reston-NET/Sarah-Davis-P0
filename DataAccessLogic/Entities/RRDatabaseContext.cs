@@ -53,6 +53,12 @@ namespace DataAccessLogic.Entities
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("customer_phone_number");
+                
+                entity.Property(e => e.CustomerPassword)
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("customer_password");
+
             });
 
             modelBuilder.Entity<LineItem>(entity =>

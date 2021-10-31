@@ -17,5 +17,16 @@ namespace BusinessLogic
         {
             return _repo.AddCustomer(p_customer);
         }
+
+        public Boolean ValidateCustomerLogin(String email, String password){
+            Customer customer = _repo.GetCustomerByEmail (email);
+        Console.WriteLine(customer);
+        if (customer.Password.Equals(password)){
+        return true;
+        }
+        else { return false;}
+
+        }
+    
     }
 }

@@ -1,32 +1,40 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using Models;
+// using System.Collections.Generic;
+// using System.IO;
+// using System.Text.Json;
+// using Models;
 
-namespace DataAccessLogic
-{
+// namespace DataAccessLogic
+// {
 
-    public class Repository{
+//     public class Repository{
 
-    private const string _filepath = "./../DataAccessLogic/Database/";
+//     private const string _filepath = "./../DataAccessLogic/Database/";
     
-    private string _jsonString;
+//     private string _jsonString;
     
-    public List<Customer> GetAllCustomers()
-    {
-        _jsonString = File.ReadAllText(_filepath + "Customer.json");
-        return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
-    }
-    public Customer AddCustomer(Customer p_customer)
-    {
-        List<Customer> ListofCustomers = GetAllCustomers();
-        ListofCustomers.Add(p_customer);
-        _jsonString = JsonSerializer.Serialize(ListofCustomers,new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(_filepath + "Customer.json", _jsonString);
-        return p_customer;
-    }
+//     public List<Customer> GetAllCustomers()
+//     {
+//         _jsonString = File.ReadAllText(_filepath + "Customer.json");
+//         return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
+//     }
+//     public Customer AddCustomer(Customer p_customer)
+//     {
+//         List<Customer> ListofCustomers = GetAllCustomers();
+//         ListofCustomers.Add(p_customer);
+//         _jsonString = JsonSerializer.Serialize(ListofCustomers,new JsonSerializerOptions { WriteIndented = true });
+//         File.WriteAllText(_filepath + "Customer.json", _jsonString);
+//         return p_customer;
+//     }
+
+//     public List<Product> GetAllProduct()
+//         {
+//             _jsonString = File.ReadAllText(_filepath+"Review.json");
+
+//             return JsonSerializer.Deserialize<List<Product>>(_jsonString);
+//         }
 
 
 
-}
-}
+
+// }
+// }

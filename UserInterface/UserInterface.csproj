@@ -1,6 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 <ItemGroup>
+  <None Remove="appsetting.json" />
+</ItemGroup>
+
+<ItemGroup>
+  <EmbeddedResource Include="appsetting.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </EmbeddedResource>
+</ItemGroup>
+
+<ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
     <ProjectReference Include="..\DataAccessLogic\DataAccessLogic.csproj" />
