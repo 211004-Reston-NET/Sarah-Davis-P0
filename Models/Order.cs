@@ -4,7 +4,7 @@ namespace Models
 {
     public class Order
     {
-        private List<LineItem> _lineItem;
+        private List<LineItem> _lineItem = new List<LineItem> ();
         public List<LineItem> LineItem
         {
             get { return _lineItem; }
@@ -22,7 +22,14 @@ namespace Models
             get { return _storeLocation; }
             set { _storeLocation = value; }
         }
-        
-        
+        private int _id;
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+            }
+        }
     }
 }

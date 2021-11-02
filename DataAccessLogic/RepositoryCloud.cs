@@ -2,6 +2,7 @@ using System;
 using Entity = DataAccessLogic.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using Models;
 
 namespace DataAccessLogic{
 
@@ -35,23 +36,37 @@ namespace DataAccessLogic{
         }
 
         
-        public List<Models.Product> GetAllProducts(Models.Product p_product)
+        public List<Models.LineItem>  GetAllLineItemByStore(int p_StoreId)
         {
-            return _context.Products
-                
-                .Select(product => new Models.Product(){ 
-                  Id = product.ProductId,
-                  Name = product.ProductName,
-                  Price = product.ProductPrice,
-                  Description = product.ProductCategory,
-                })
-                .ToList(); 
+
+            return _context.LineItems
+                .Where(p => p.StorefrontId == p_StoreId)
+                .Select(item => new Models.LineItem(){ 
+                  LineItemId = item.LineItemId,
+                  StorefrontId = item.StorefrontId,
+                  Quantity = item.LineItemQuantity,
+                  Product = new Models.Product(){
+                      ProductId = item.Product.ProductId,
+                      Price = item.Product.ProductPrice,
+                      Name = item.Product.ProductName,
+                      Description = item.Product.ProductDescription,
+                      Category = item.Product.ProductCategory
+
+                  }
+                }
+            ).ToList(); 
         }
+
+        public List<Product> GetAllProducts(Product p_product)
+        {
+            throw new NotImplementedException();
+        }
+
         public Models.Customer GetCustomerByEmail(String p_email)
         {
             Entity.Customer custToFind = _context.Customers.Where(Customer => p_email == Customer.CustomerEmail).Single();
-            
-            return new Models.Customer(){
+            return new Models.Customer()
+            {
                 Id = custToFind.CustomerId,
                 Name = custToFind.CustomerName,
                 Email = custToFind.CustomerEmail,
@@ -64,6 +79,19 @@ namespace DataAccessLogic{
           
             };
         }
-}
+        public List<Models.StoreFront> GetAllStorefront()
+        {
+            //Method Syntax
+            return _context.Storefronts.Select(Store => 
+                new Models.StoreFront()
+                {
+                    Name = Store.StorefrontName,
+                    Address = Store.StorefrontAddress,
+                    StoreFrontId = Store.StorefrontId,
+                   
+                }
+            ).ToList();
+        }
+    }
 }
 

@@ -5,9 +5,12 @@ namespace UserInterface
         MainMenu, 
         Exit,
         AddCustomer,
-        ShowExcursions,
-        ShowClothing,
-        ShowProducts
+        LogIn,
+        ShowProducts,
+        GetAllLineItemByStore,
+        ViewStorefronts,
+        OrderMenu,
+        PlaceOrderMenu,
     }
     public interface IMenu
     {

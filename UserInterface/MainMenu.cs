@@ -12,12 +12,8 @@ namespace UserInterface
             Console.WriteLine("Welcome to Wanderlust Outfitters!");
             Console.WriteLine("How can we help you?");
             Console.WriteLine("====================");
-            Console.WriteLine("[1] - Show Excursions");
-            Console.WriteLine("[2] - Show Products");
-            Console.WriteLine("[3] - Show Clothing");
-            Console.WriteLine("====================");
-            Console.WriteLine("[4] - Log in");
-            Console.WriteLine("[5] - Create Account");
+            Console.WriteLine("[1] - Log in");
+            Console.WriteLine("[2] - Create Account");
             Console.WriteLine("====================");
             Console.WriteLine("[0] - Exit");
         }
@@ -29,14 +25,8 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "1": 
-                    return MenuType.ShowExcursions;
+                    return MenuType.LogIn;
                 case "2": 
-                    return MenuType.ShowProducts;
-                case "3": 
-                    return MenuType.ShowClothing;
-                // case "4": 
-                //     return MenuType.LogIn;
-                case "5": 
                     return MenuType.AddCustomer;
                 case "0":
                     return MenuType.Exit;

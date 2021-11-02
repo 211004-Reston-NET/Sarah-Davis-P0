@@ -17,9 +17,7 @@ namespace DataAccessLogic.Entities
         public string CustomerAddress { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public int CustomerId { get; set; }
-
         public string CustomerPassword { get; set; }
-        
 
         public virtual ICollection<OrderPage> OrderPages { get; set; }
     }

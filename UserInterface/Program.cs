@@ -26,7 +26,6 @@ namespace UserInterface
                     .Options;
 
 
-
                 Console.Clear();
                 page.Menu();
                 MenuType userInput = page.UserChoice();
@@ -43,7 +42,15 @@ namespace UserInterface
                     case MenuType.AddCustomer:
                         page = new AddCustomer(new CustomerBL(new RepositoryCloud(new RRDatabaseContext(options))));
                         break;
-
+                    case MenuType.ViewStorefronts:
+                        page = new ViewStorefronts (new StoreBL(new RepositoryCloud(new RRDatabaseContext(options))));
+                        break;
+                    case MenuType.ShowProducts:
+                        page = new ShowProducts(new StoreBL(new RepositoryCloud(new RRDatabaseContext(options))));
+                        break;
+                    case MenuType.PlaceOrderMenu:
+                        page = new PlaceOrderMenu(new StoreBL(new RepositoryCloud(new RRDatabaseContext(options))));
+                        break;
                     case MenuType.Exit:
                         Console.WriteLine("We're sorry to see you go!");
                         Console.WriteLine("Press Enter to Exit");

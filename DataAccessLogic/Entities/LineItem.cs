@@ -12,10 +12,10 @@ namespace DataAccessLogic.Entities
             LineItemOrders = new HashSet<LineItemOrder>();
         }
 
-        public int? ProductId { get; set; }
-        public int? LineItemQuantity { get; set; }
+        public int ProductId { get; set; }
+        public int LineItemQuantity { get; set; }
         public int LineItemId { get; set; }
-        public int? StorefrontId { get; set; }
+        public int StorefrontId { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual Storefront Storefront { get; set; }

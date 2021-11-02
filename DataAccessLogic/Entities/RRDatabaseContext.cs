@@ -49,16 +49,15 @@ namespace DataAccessLogic.Entities
                     .IsUnicode(false)
                     .HasColumnName("customer_name");
 
+                entity.Property(e => e.CustomerPassword)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("customer_password");
+
                 entity.Property(e => e.CustomerPhoneNumber)
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("customer_phone_number");
-                
-                entity.Property(e => e.CustomerPassword)
-                    .HasMaxLength(30)
-                    .IsUnicode(false)
-                    .HasColumnName("customer_password");
-
             });
 
             modelBuilder.Entity<LineItem>(entity =>
@@ -76,11 +75,13 @@ namespace DataAccessLogic.Entities
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__line_item__produ__6477ECF3");
 
                 entity.HasOne(d => d.Storefront)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.StorefrontId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__line_item__store__656C112C");
             });
 

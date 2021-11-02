@@ -31,8 +31,10 @@ namespace UserInterface
             {
                 
                 case "1":
-                    if (String.IsNullOrEmpty(SingletonCustomer.customer.Email)){
-                        Console.WriteLine("Please input email");}
+                    if (String.IsNullOrEmpty(SingletonCustomer.customer.Email))
+                    {
+                        Console.WriteLine("Please input email");
+                    }
 
                     Console.WriteLine("Add Email");
                     SingletonCustomer.customer.Email = Console.ReadLine();
@@ -46,13 +48,13 @@ namespace UserInterface
 
                 case "3":
                     if (String.IsNullOrEmpty(SingletonCustomer.customer.Password)){
-                        Console.WriteLine("Please input a password");
+                        Console.WriteLine("Add Password");
                         SingletonCustomer.customer.Password = Console.ReadLine();
                         return MenuType.LogIn;
                     } else {
                         if (_customerbl.ValidateCustomerLogin(SingletonCustomer.customer.Email,SingletonCustomer.customer.Password)){
                             Console.WriteLine("Login Successful!");
-                        return MenuType.StoreLocations;
+                        return MenuType.ViewStorefronts;
                         }
                         else {
                             Console.WriteLine("Your password was invalid");

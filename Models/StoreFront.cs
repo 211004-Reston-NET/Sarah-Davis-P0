@@ -28,6 +28,6 @@ namespace Models
             get { return _listOfOrders; }
             set { _listOfOrders = value; }
         }
-        
+        public int StoreFrontId { get; set; }
     }
 }

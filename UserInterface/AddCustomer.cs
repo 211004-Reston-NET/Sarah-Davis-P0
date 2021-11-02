@@ -15,6 +15,7 @@ namespace UserInterface
             Console.WriteLine($"Address-{SingletonCustomer.customer.Address}");
             Console.WriteLine($"PhoneNumber-{SingletonCustomer.customer.PhoneNumber}");
             Console.WriteLine($"Email-{SingletonCustomer.customer.Email}");
+            Console.WriteLine($"Password-{SingletonCustomer.customer.Password}");
             Console.WriteLine("Create New User");
             Console.WriteLine("[1]: Add Name");
             Console.WriteLine("[2]: Add Address");
@@ -64,7 +65,7 @@ namespace UserInterface
                     } else {
                         Console.WriteLine("Account created!");
                     _customerbl.AddCustomer(SingletonCustomer.customer);
-                     return MenuType.MainMenu;
+                     return MenuType.ViewStorefronts;
                     }
                     
                 case "7":

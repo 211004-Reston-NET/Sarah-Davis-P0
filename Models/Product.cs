@@ -2,14 +2,20 @@ namespace Models
 {
     public class Product
     {
+        private int _Id;
+        public int ProductId
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
         private string _name;
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
-        private decimal _price;
-        public decimal Price
+        private decimal? _price;
+        public decimal? Price
         {
             get { return _price; }
             set { _price = value; }
@@ -26,7 +32,7 @@ namespace Models
             get { return _category; }
             set { _category = value; }
         }
-        
-        
+
+        public object LineItemId { get; internal set; }
     }
 }
