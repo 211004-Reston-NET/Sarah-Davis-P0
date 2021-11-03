@@ -48,7 +48,7 @@ namespace UserInterface
                     if (String.IsNullOrEmpty(SingletonCustomer.customer.Email)){
                         Console.WriteLine("Please input email");}
 
-                    Console.WriteLine("Add Email");
+                    Console.WriteLine("");
                     SingletonCustomer.customer.Email = Console.ReadLine();
                     return MenuType.AddCustomer;
                
@@ -65,7 +65,7 @@ namespace UserInterface
                     } else {
                         Console.WriteLine("Account created!");
                     _customerbl.AddCustomer(SingletonCustomer.customer);
-                     return MenuType.ViewStorefronts;
+                     return MenuType.LogIn;
                     }
                     
                 case "7":

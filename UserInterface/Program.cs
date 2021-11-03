@@ -51,6 +51,7 @@ namespace UserInterface
                     case MenuType.PlaceOrderMenu:
                         page = new PlaceOrderMenu(new StoreBL(new RepositoryCloud(new RRDatabaseContext(options))));
                         break;
+
                     case MenuType.Exit:
                         Console.WriteLine("We're sorry to see you go!");
                         Console.WriteLine("Press Enter to Exit");
@@ -58,7 +59,7 @@ namespace UserInterface
                         repeat = false;
                         break;
                     default:
-                        Console.WriteLine("See you soon");
+                        Console.WriteLine("Enjoy your products and see you soon");
                         repeat = false;
                         break;
                 }

@@ -20,16 +20,22 @@ namespace UserInterface
                 Console.WriteLine(item);
                 Console.WriteLine("=============");
             }
-            Console.WriteLine("[1] - Add product to cart");
+            Console.WriteLine("[1] - Add item");
+            Console.WriteLine("[2] - Checkout");
+            Console.WriteLine("[0] - Back to Products");
+
         }
         public MenuType UserChoice()
+        
         {
+            
             List<LineItem> lineItemsList = _IBL.GetAllLineItemByStore(SingletonCustomer.StoreId);
             string userChoice = Console.ReadLine();
             switch (userChoice)
             { 
+                
                 case "1": 
-                Console.WriteLine("Please type the product number you'd like to purchase.");
+                Console.WriteLine("Please input item ID");
                 int _inputInt = int.Parse(Console.ReadLine().Trim());
                 
                     foreach(LineItem prod in lineItemsList)
@@ -40,19 +46,23 @@ namespace UserInterface
                                 SingletonCustomer.order.LineItem.Add(prod);
                             }   
                     
-                        
                     }
-                    return MenuType.PlaceOrderMenu;
+                
+                   return MenuType.PlaceOrderMenu; 
                 case "0":
                     return MenuType.ShowProducts;
-                
+                case "2": 
+                    return MenuType.Purchases;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.PlaceOrderMenu;
+                
             }
+                
         }
+        
     }
 }
 

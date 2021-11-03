@@ -11,6 +11,7 @@ namespace UserInterface
         ViewStorefronts,
         OrderMenu,
         PlaceOrderMenu,
+        Purchases,
     }
     public interface IMenu
     {

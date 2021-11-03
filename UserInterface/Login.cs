@@ -36,7 +36,7 @@ namespace UserInterface
                         Console.WriteLine("Please input email");
                     }
 
-                    Console.WriteLine("Add Email");
+                    // Console.WriteLine("Add Email");
                     SingletonCustomer.customer.Email = Console.ReadLine();
                     return MenuType.LogIn;
                

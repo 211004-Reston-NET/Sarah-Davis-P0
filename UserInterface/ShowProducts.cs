@@ -23,8 +23,8 @@ namespace UserInterface
                 Console.WriteLine(item);
                 Console.WriteLine("====================");
             }
-            Console.WriteLine("[1] - Place order");
-            Console.WriteLine("[0] - Go Back");
+            Console.WriteLine("[1] - Place Order");
+            Console.WriteLine("[0] - Back to Store Locations");
         }
 
 
