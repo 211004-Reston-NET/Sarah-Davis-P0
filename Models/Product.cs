@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Models
 {
     public class Product
@@ -14,8 +16,8 @@ namespace Models
             get { return _name; }
             set { _name = value; }
         }
-        private decimal? _price;
-        public decimal? Price
+        private decimal _price;
+        public decimal Price
         {
             get { return _price; }
             set { _price = value; }
@@ -32,7 +34,12 @@ namespace Models
             get { return _category; }
             set { _category = value; }
         }
+        public virtual List<LineItem> LineItem { get; set; }
 
-        public object LineItemId { get; internal set; }
+        public int LineItemId { get; internal set; }
+        public string ProductCategory { get; set; }
+         public string ProductName { get; set; }
+       
+        public string ProductDescription { get; set; }
     }
 }

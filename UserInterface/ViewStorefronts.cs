@@ -16,7 +16,7 @@ namespace UserInterface
 
         {
 
-            int Counter = 0;
+            
             List<StoreFront> StorefrontList = _storeBl.GetStoreFronts();
             foreach (StoreFront Store in StorefrontList)
 

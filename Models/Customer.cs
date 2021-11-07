@@ -11,7 +11,7 @@ namespace Models
         private string _address;
         private string _email;
         private string _phoneNumber;
-        private ICollection<Order> _listoforders;
+        private List<Order> _listoforders;
         private string _password;
 
         
@@ -81,7 +81,7 @@ namespace Models
                 _password = value;
             }
         }
-         public ICollection<Order> ListOfOrders
+         public List <Order> ListOfOrders
         {
             get { return _listoforders; }
             set
@@ -89,5 +89,6 @@ namespace Models
                 _listoforders = value;
             }
         }
+       
     }
 }

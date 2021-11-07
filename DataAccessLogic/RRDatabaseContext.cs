@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Models;
 
 #nullable disable
 
-namespace DataAccessLogic.Entities
+namespace DataAccessLogic
 {
     public partial class RRDatabaseContext : DbContext
     {
@@ -20,9 +21,9 @@ namespace DataAccessLogic.Entities
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<LineItem> LineItems { get; set; }
         public virtual DbSet<LineItemOrder> LineItemOrders { get; set; }
-        public virtual DbSet<OrderPage> OrderPages { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Storefront> Storefronts { get; set; }
+        public virtual DbSet<StoreFront> Storefronts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,29 +33,29 @@ namespace DataAccessLogic.Entities
             {
                 entity.ToTable("customer");
 
-                entity.Property(e => e.CustomerId).HasColumnName("customer_id");
+                entity.Property(e => e.Id).HasColumnName("customer_id");
 
-                entity.Property(e => e.CustomerAddress)
+                entity.Property(e => e.Address)
                     .HasMaxLength(30)
                     .IsUnicode(false)
                     .HasColumnName("customer_address");
 
-                entity.Property(e => e.CustomerEmail)
+                entity.Property(e => e.Email)
                     .HasMaxLength(30)
                     .IsUnicode(false)
                     .HasColumnName("customer_email");
 
-                entity.Property(e => e.CustomerName)
+                entity.Property(e => e.Name)
                     .HasMaxLength(30)
                     .IsUnicode(false)
                     .HasColumnName("customer_name");
 
-                entity.Property(e => e.CustomerPassword)
+                entity.Property(e => e.Password)
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("customer_password");
 
-                entity.Property(e => e.CustomerPhoneNumber)
+                entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("customer_phone_number");
@@ -66,14 +67,14 @@ namespace DataAccessLogic.Entities
 
                 entity.Property(e => e.LineItemId).HasColumnName("line_item_id");
 
-                entity.Property(e => e.LineItemQuantity).HasColumnName("line_item_quantity");
+                entity.Property(e => e.Quantity).HasColumnName("line_item_quantity");
 
                 entity.Property(e => e.ProductId).HasColumnName("product_id");
 
                 entity.Property(e => e.StorefrontId).HasColumnName("storefront_id");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.LineItems)
+                    .WithMany(p => p.LineItem)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__line_item__produ__6477ECF3");
@@ -89,7 +90,7 @@ namespace DataAccessLogic.Entities
             {
                 entity.ToTable("line_item_order");
 
-                entity.Property(e => e.LineItemOrderId).HasColumnName("line_item_order_id");
+                entity.Property(e => e.LineItemOrderID).HasColumnName("line_item_order_id");
 
                 entity.Property(e => e.LineItemId).HasColumnName("line_item_id");
 
@@ -106,7 +107,7 @@ namespace DataAccessLogic.Entities
                     .HasConstraintName("FK__line_item__order__6D0D32F4");
             });
 
-            modelBuilder.Entity<OrderPage>(entity =>
+            modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
                     .HasName("PK__order_pa__46596229F5810271");
@@ -117,24 +118,24 @@ namespace DataAccessLogic.Entities
 
                 entity.Property(e => e.CustomerId).HasColumnName("customer_id");
 
-                entity.Property(e => e.OrderStorelocation)
+                entity.Property(e => e.StoreLocation)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("order_storelocation");
 
-                entity.Property(e => e.OrderTotalprice)
+                entity.Property(e => e.TotalPrice)
                     .HasColumnType("money")
                     .HasColumnName("order_totalprice");
 
                 entity.Property(e => e.StorefrontId).HasColumnName("storefront_id");
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.OrderPages)
+                    .WithMany(p => p.ListOfOrders)
                     .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("FK__order_pag__custo__693CA210");
 
                 entity.HasOne(d => d.Storefront)
-                    .WithMany(p => p.OrderPages)
+                    .WithMany(p => p.Order)
                     .HasForeignKey(d => d.StorefrontId)
                     .HasConstraintName("FK__order_pag__store__68487DD7");
             });
@@ -160,23 +161,23 @@ namespace DataAccessLogic.Entities
                     .IsUnicode(false)
                     .HasColumnName("product_name");
 
-                entity.Property(e => e.ProductPrice)
+                entity.Property(e => e.Price)
                     .HasColumnType("money")
                     .HasColumnName("product_price");
             });
 
-            modelBuilder.Entity<Storefront>(entity =>
+            modelBuilder.Entity<StoreFront>(entity =>
             {
                 entity.ToTable("storefront");
 
-                entity.Property(e => e.StorefrontId).HasColumnName("storefront_id");
+                entity.Property(e => e.StoreFrontId).HasColumnName("storefront_id");
 
-                entity.Property(e => e.StorefrontAddress)
+                entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("storefront_address");
 
-                entity.Property(e => e.StorefrontName)
+                entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("storefront_name");

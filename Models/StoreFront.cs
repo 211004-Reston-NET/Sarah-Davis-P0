@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace Models
 {
+
     public class StoreFront
     {
         private string _name;
@@ -29,5 +30,7 @@ namespace Models
             set { _listOfOrders = value; }
         }
         public int StoreFrontId { get; set; }
+        public virtual List<LineItem> LineItems { get; set; }
+        public virtual List<Order> Order { get; set; }
     }
 }

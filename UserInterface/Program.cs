@@ -2,7 +2,6 @@
 using System.IO;
 using BusinessLogic;
 using DataAccessLogic;
-using DataAccessLogic.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -51,7 +50,7 @@ namespace UserInterface
                     case MenuType.PlaceOrderMenu:
                         page = new PlaceOrderMenu(new StoreBL(new RepositoryCloud(new RRDatabaseContext(options))));
                         break;
-
+                    
                     case MenuType.Exit:
                         Console.WriteLine("We're sorry to see you go!");
                         Console.WriteLine("Press Enter to Exit");
@@ -59,7 +58,8 @@ namespace UserInterface
                         repeat = false;
                         break;
                     default:
-                        Console.WriteLine("Enjoy your products and see you soon");
+                        Console.WriteLine("Enjoy your products and see you soon!");
+                        Console.ReadLine();
                         repeat = false;
                         break;
                 }

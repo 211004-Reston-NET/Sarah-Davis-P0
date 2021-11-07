@@ -22,5 +22,10 @@ namespace BusinessLogic
         {
             return repositoryCloud.GetAllStorefront();
         }
+
+        public void PlaceOrder(Customer p_customer, Order p_order)
+        {
+           repositoryCloud.PlaceOrder(p_customer, p_order);
+        }
     }
 }

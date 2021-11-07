@@ -54,6 +54,7 @@ namespace UserInterface
                     } else {
                         if (_customerbl.ValidateCustomerLogin(SingletonCustomer.customer.Email,SingletonCustomer.customer.Password)){
                             Console.WriteLine("Login Successful!");
+                            SingletonCustomer.customer = _customerbl.CustomerLogin(SingletonCustomer.customer.Email,SingletonCustomer.customer.Password);
                         return MenuType.ViewStorefronts;
                         }
                         else {

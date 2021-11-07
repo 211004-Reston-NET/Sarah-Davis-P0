@@ -52,6 +52,7 @@ namespace UserInterface
                 case "0":
                     return MenuType.ShowProducts;
                 case "2": 
+                    _IBL.PlaceOrder(SingletonCustomer.customer, SingletonCustomer.order); 
                     return MenuType.Purchases;
                 default:
                     Console.WriteLine("Please input a valid response!");

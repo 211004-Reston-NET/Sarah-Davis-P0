@@ -4,6 +4,10 @@ namespace Models
 {
     public class Order
     {
+        
+        public int OrderId { get; set; }
+        public int LineItemId { get; set; }
+        // public int LineItemOrderId { get; set; }
         private List<LineItem> _lineItem = new List<LineItem> ();
         public List<LineItem> LineItem
         {
@@ -22,14 +26,18 @@ namespace Models
             get { return _storeLocation; }
             set { _storeLocation = value; }
         }
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-            }
-        }
+        
+        
+        public int CustomerId { get; set; }
+     
+        
+        public int StorefrontId { get; set; }
+         public virtual Customer Customer { get; set; }
+        
+        public virtual List<LineItemOrder> LineItemOrders { get; set; }
+        public virtual StoreFront Storefront { get; set; }
+
+        
+       
     }
 }

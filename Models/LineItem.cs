@@ -1,9 +1,15 @@
+using System.Collections.Generic;
+
 namespace Models
-{
+{  
     public class LineItem
     {
+
+        public int ProductId { get; set; }
         private int _lineitemid;
-        private Product _product;
+        private Product _product = new Product();
+      
+
         public Product Product
         {
             get { return _product; }
@@ -24,10 +30,13 @@ namespace Models
         {
             get ;  set;
         }
+       public virtual StoreFront Storefront { get; set; }
+
         public override string ToString()
         {
             return $"LineItemId: {Product.ProductId} \nPrice: {Product.Price} \nName: {Product.Name} \nDescription: {Product.Description} \nCategory: {Product.Category} \nQuantity: {Quantity}";
         }
+        public virtual List<LineItemOrder> LineItemOrders { get; set; }
 
     }
 }

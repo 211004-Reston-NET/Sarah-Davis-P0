@@ -65,6 +65,7 @@ namespace UserInterface
                     } else {
                         Console.WriteLine("Account created!");
                     _customerbl.AddCustomer(SingletonCustomer.customer);
+                    SingletonCustomer.customer = _customerbl.CustomerLogin(SingletonCustomer.customer.Email,SingletonCustomer.customer.Password);
                      return MenuType.LogIn;
                     }
                     
